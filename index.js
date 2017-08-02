@@ -1,5 +1,6 @@
 'use strict';
 var filter = require('gulp-filter');
+var gutil = require('gulp-util');
 var gitignore = require('parse-gitignore');
 var fs = require('fs');
 var startsWith = require('starts-with');
@@ -10,7 +11,7 @@ module.exports = function (fp, patterns, options) {
   }
 
   if (!fs.existsSync(fp)) {
-    return [];
+    return gutil.noop();
   }
 
   if (typeof patterns !== 'string' && !Array.isArray(patterns)) {
